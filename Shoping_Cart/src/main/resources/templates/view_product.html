@@ -13,29 +13,37 @@ th:replace="base::layout(~{::section})">
             <div class="col-md-12 p-5">
             <div class="row">
             <div class="col-md-6 text-end">
-            <img alt="" src="/img/product/laptop.jpg" width="50%" height="350px">
+            <img alt="" src="/img/product_img/laptop.jpg" width="50%" height="350px">
              </div>
              
              <div class="col-md-6">
              
-             <p class="fs-3">Laptop</p>
+             <p class="fs-3">[[${product.title}]]</p>
              
              <p>
-                <span class="fw-bold">Descripion : </span><br>Hp Laptop,
-                256gb SSD
+                <span class="fw-bold">Descripion : </span><br>[[${product.description}]]
+                
                 </p>
                 <p>
-                   <span class="fw-bold">Product Details: </span><br>Status :
-                   <span class="badge bg-success">available</span> <span
-                   class="badge by-warning">out of stoke</span> <br> Category
-                   : Laptop<br> Policy :7 Days Replacement & Returns
+                   <span class="fw-bold">Product Details: </span><br>
+                   Status :
+                   <th:block th:if="${product.stock>0}">
+                   <span class="badge bg-success">Available</span> 
+                  </th:block>
+                   
+                   <th:block th:if="${product.stock>0}">
+                   <span class="badge bg-warning"> out of stock</span> 
+                  </th:block>
+                   
+                   <br> Category: [[${product.category}]]<br> 
+                   Policy :7 Days Replacement & Return
                    
                    </p>
                    <p class="fs-5 fw-bold">
                    price :&nbsp; &nbsp; &nbsp; &nbsp;<i class="fas-fa-rupee-sign"></i>
-                   7000<span
+                    [[${product.discountPrice}]]<span
                    class="fs-6 text decoration-line-through text-secondary">14000</span>
-                   <span class="fs-6 text-seccess">50% off</span>
+                   <span class="fs-6 text-seccess"> [[${product.discount}]]% off</span>
                    </p>
                       
                    <div class="row">
@@ -51,7 +59,14 @@ th:replace="base::layout(~{::section})">
                        <i class="fas fa-truck-movie fa-2x"></i>
                         <p>Free Shipping</p> >
                 </div>
-              <a href="login.jsp" class="btn btn-danger col-md-12">Add To Card</a>
+                
+                 <th:block th:if="${product.stock>0}">
+                <a href="login.jsp" class="btn btn-danger col-md-12">Add To Card</a>
+                </th:block>
+                
+                <th:block th:unless="${product.stock>0}">
+              <a href="login.jsp" class="btn text-white btn-warning col-md-12">AOut of stock</a>
+              </th:block>
                 </div>
                
                 </div>

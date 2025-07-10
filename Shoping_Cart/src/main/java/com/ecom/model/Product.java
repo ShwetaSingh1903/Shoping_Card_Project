@@ -36,6 +36,12 @@ public class Product {
 	private String image;
 	
 	private int count;
+	
+	private int discount;
+	
+	private Double discountPrice;
+	
+	private Boolean isActive;
 
 	public int getCount() {
 		return count;
@@ -101,4 +107,29 @@ public class Product {
 	public void setImage(String image) {
 		this.image = image;
 	}
+
+	public int getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(int discount) {
+		this.discount = discount;
+	}
+
+	public Double getDiscountPrice() {
+		return discountPrice;
+	}
+
+	public void setDiscountPrice(Double discountPrice) {
+		this.discountPrice = discountPrice;
+	}
+
+	public Boolean getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
+	
 }
