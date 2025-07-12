@@ -38,6 +38,8 @@ public class UserDtls {
 
 	private String profileImage;
 
+	private String role;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -116,6 +118,14 @@ public class UserDtls {
 
 	public void setProfileImage(String profileImage) {
 		this.profileImage = profileImage;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	
