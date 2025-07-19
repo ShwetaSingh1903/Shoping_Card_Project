@@ -43,11 +43,15 @@ public class CustomUser implements UserDetails {
 	}
 	
 	public boolean isAccountNonLocked() {
-		return true;
+		return user.getAccountNonLocked();
 	}
 	
 	public boolean isCredentialNonExpired() {
 		return true;
+	}
+	
+	public boolean isEnable() {
+		return user.getIsEnable();
 	}
 	
 }

@@ -17,8 +17,12 @@ th:replace="base::layout(~{::section})">
         <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
          <div class="card-header">
            <p class="fs-4 text-center">Login</p>
-           <div th:if="${param.error}" class="aletr aletr-danger">
-             Invalid Email & Password</div>
+           <div th:if="${param.error}"
+            class="alert alert-danger text-center">
+            
+            <th:block th:if="${session.SPRING_SECURITY_LAST_EXCEPTION=null}">
+             [[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</div>
+             </th:block>
             
              <div th:if="${param.logout}" class="aletr aletr-success">
              Logout Successfully</div>
@@ -31,7 +35,7 @@ th:replace="base::layout(~{::section})">
                  </div>
                  
                  <div class="mb-3">
-                     <label class="form-lable">PassWord</label> <input
+                     <label class="form-lable">Password</label> <input
                         class="form-control" name="password" type="password">
                   </div>
                         <button type="submit"
@@ -40,7 +44,7 @@ th:replace="base::layout(~{::section})">
               </div>
               
               <div class="card-footer">
-              <a href="#" class="text-decoration-none">Forgot Password</a><br> 
+              <a href="/forgot-password" class="text-decoration-none">Forgot Password</a><br> 
                   Don't have an account ?
                        <a href="#">Create one </a>
               </div>
