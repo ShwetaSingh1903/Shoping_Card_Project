@@ -10,7 +10,7 @@
      <div class="container-fluid mt-5 p-2">
      <div class="card">
      <div class="card-header text-center">
-     <p class="fs-4">View Products</p>
+     <p class="fs-4">Cart Page</p>
      <th:block th:if="${session.succMsg}">
 							                   <p class="text-success fw-bold">[[${session.succMsg}]]</p>
 							                   <th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
@@ -27,42 +27,45 @@
     <tr>
       <th scope="col">S1 No</th>
        <th scope="col">Image</th>
-      <th scope="col">Title</th>
-      <th scope="col">Category</th>
-      <th scope="col">Discount</th>
-      <th scope="col">DiscountProce</th>
-       <th scope="col">Status</th>
-       <th scope="col">Price</th>
-       <th scope="col">Stock</th>
-       <th scope="col">Action</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Price</th>
+      <th scope="col" class="text-center">Quantity</th>
+      <th scope="col">Total Price</th>
       
     </tr>
   </thead>
   <tbody>
-    <tr th:each="p,c:${products}">
+    <tr th:each="cart,c:${carts}">
       <th scope="row">[[${c.count}]]</th>
-      <td><img th:src="@{'/img/product_img/'+${p.image}}" width="70px" height=70px></td>
-      <td>[[${p.title}]]</td>
-      <td>[[${p.category}]]</td>
-      <td>[[${p.price}]]</td>
-      <td>[[${p.discount}]]</td>
-      <td>[[${p.discountPrice}]]</td>
-       <td>[[${p.isActive}]]</td>
-      <td>[[${p.stock}]]</td>
-      <td>
-      <a th:href="@{'/admin/editProduct/'+${p.id}}" class="btn btn-sm btn-primary">
-      <i class="fa-solid fa-pen-to-square"></i>Edit</a>
-      
-       <a th:href="@{'/admin/deleteProduct/'+${p.id}}" class="btn btn-sm btn-danger">
-      <i class="fa-solid fa-trash"></i>Delete</a></td>
+      <td><img th:src="@{'/img/product_img/'+${cart.product.image}}" width="70px" height=70px></td>
+      <td>[[${cart.product.title}]]</td>
+      <td>[[${cart.product.discountPrice}]]</td>
+       <td class="text-center"><a
+       th:href="@{'/user/cartQuantityUpdate?sy=de&cid='+${cart.id}}">
+       <i class="fa-solid fa-minus"></i></a>
+       
+         [ [[${cart.quantity}]] ]
+         
+         <a th:href="@{'/user/cartQuantityUpdate?sy=in&cid='+${cart.id}}">
+          <i class="fa-solid fa-plus"></i> </a>
+          </td>
+      <td>[[${cart.totalPrice}]]</td> 
     </tr>
+    <tr>
+         <td colspan="4"></td>
+         <td class="fw-bold">Total Price</td>
+       <td class="fw-bold">&#8377; [[${totalOrderPrice}]]</td>
+   </tr>
+   
     
   </tbody>
 </table>
-     </div>
-     </div>
-    </div>
+      <div class="text-center">
+      <a href="/user/orders" class="btn btn-warning">Proceed Payment</a>
+</div>
+   </div>
+ </div>
+ </div>
    
      </section>
 </body>
-</html>
