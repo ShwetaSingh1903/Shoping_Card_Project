@@ -53,5 +53,16 @@ public class CustomUser implements UserDetails {
 	public boolean isEnable() {
 		return user.getIsEnable();
 	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return false;
+	}
 	
 }
